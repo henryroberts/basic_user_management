@@ -41,7 +41,7 @@ if(isset($_POST["submit"])){
 			}
 		/* hàm sql_num_rows sẽ tra về số bản ghi trong db vì vậy ta sử dụng nó để kiếm tra xem tài khoản này đã tồn tại
 		trong db hay chưa. nếu nó > 0 thì tk đã tồn tại còn <= 0 thì tại khoản chưa tồn tại. */
-		if(mysql_num_rows(mysql_query("SELECT * FROM `thanh_vien` WHERE `tai_khoan` = '$user'")) >0){
+		if(mysql_num_rows(mysql_query("SELECT * FROM `thanh_vien` WHERE `tai_khoan` = '$user' AND id_thanhvien != $id_thanhvien")) >0){
 		$error3 = '<span style="color:red;">(*)</span>';
 		}
 		// kiểm tra quyền truy cập là member hay admin để truy vấn
@@ -65,9 +65,9 @@ if(isset($_POST["submit"])){
   bạn kiểm tra lại nơi có chứa ký tự (*)"; } ?></p>
   <fieldset>
 	<label for="name">Username: <?php if(isset($error) || isset($error3)){echo $error;} ?></label>
-	<input type="text" id="name" name="user" value="<?php echo $rows["tai_khoan"]; ?>">
+	<input type="text" id="name" name="user" value="<?php if(isset($_POST['user'])) { echo $user;} else { echo $rows["tai_khoan"]; } ?>">
 	<label for="mail">Password: <?php if(isset($error2)){echo $error2;} ?></label>
-	<input type="password" id="mail" name="pass" value="<?php echo $rows["mat_khau"]; ?>">
+	<input type="password" id="mail" name="pass" value="<?php if(isset($_POST['user'])) { echo $pass;} else { echo $rows["mat_khau"]; } ?>">
 	<select name="lc">
 	<option value="Unselect">Lựa chọn quyền truy cập</option> 
 	<option value="member" <?php if($rows["quyen_truy_cap"] == 1){echo 'selected="selected"';} ?>>Member</option>
