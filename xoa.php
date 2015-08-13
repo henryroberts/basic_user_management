@@ -3,7 +3,7 @@ ob_start();// loại bỏ thông báo lỗi của header cho xampp phiên bản 
 session_start(); // triệu gọi thư viện session
 //kiểm tra sự tồn tại session vì lý do bảo mật
 if(isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["dntc"]) == "tca"){
-	include_once("connect.php"); // triệu gọi fike kết nối
+	include_once("connect.php"); // triệu gọi file kết nối
 	$id_thanhvien = $_GET["id_tv"]; // nhận biến id_thanhvien để truy vấn
 	$sql = "DELETE FROM `thanh_vien` WHERE `id_thanhvien` = $id_thanhvien"; // truy vấn
 	$query = mysql_query($sql); // thực thi truy vấn

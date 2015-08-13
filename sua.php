@@ -4,7 +4,7 @@ session_start(); //// xem conment bên file xóa nếu bạn chưa hiểu
 $id_thanhvien = $_GET["id_tv"]; // nhận biến id_thanhvien từ thanh địa chỉ để sử dụng cho truy vấn sql
 include("connect.php"); // triệu gọi file kết nối
 include("functions.php");// triệu gọi file functions để xử dụng function cho check form
-$rows = mysql_fetch_array(mysql_query("SELECT * FROM `thanh_vien` WHERE `id_thanhvien` = $id_thanhvien"));
+$rows = @mysql_fetch_array(mysql_query("SELECT * FROM `thanh_vien` WHERE `id_thanhvien` = $id_thanhvien"));
 ?>
 <!doctype html>
 <html>
@@ -39,7 +39,8 @@ if(isset($_POST["submit"])){
 		else {
 			$pass = md5($_POST["pass"]); // mã hóa pass để đảm bảo bảo mật
 			}
-		// hàm sql_num_rows sẽ tra về số bản ghi trong db vì vậy ta sử dụng nó để kiếm tra xem tài khoản này đã tồn tại trong db hay chưa. nếu nó > 0 thì tk đã tồn tại còn <= 0 thì tại khoản đã tồn tại.
+		/* hàm sql_num_rows sẽ tra về số bản ghi trong db vì vậy ta sử dụng nó để kiếm tra xem tài khoản này đã tồn tại
+		trong db hay chưa. nếu nó > 0 thì tk đã tồn tại còn <= 0 thì tại khoản chưa tồn tại. */
 		if(mysql_num_rows(mysql_query("SELECT * FROM `thanh_vien` WHERE `tai_khoan` = '$user'")) >0){
 		$error3 = '<span style="color:red;">(*)</span>';
 		}
@@ -60,7 +61,8 @@ if(isset($_POST["submit"])){
 ?>
 <form method="post">
   <h1>Update Information</h1>
-  <p style="color:#FF0004;"><?php if(isset($error) || isset($error2) || isset($error3)){echo 'có điều gì đó sai. mong bạn kiểm tra lại nơi có chứa ký tự (*)';} ?></p>
+  <p style="color:#FF0004;"><?php if(isset($error) || isset($error2) || isset($error3)){echo "Có điều gì đó sau mong
+  bạn kiểm tra lại nơi có chứa ký tự (*)"; } ?></p>
   <fieldset>
 	<label for="name">Username: <?php if(isset($error) || isset($error3)){echo $error;} ?></label>
 	<input type="text" id="name" name="user" value="<?php echo $rows["tai_khoan"]; ?>">

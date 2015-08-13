@@ -41,7 +41,7 @@ if(isset($_POST["submit"])){
 			elseif($_POST["lc"] == "admin"){
 				$qtc = 2;
 				}
-			//đọc lại comment bên file sua nếu bạn chưa hiểu chỗ này
+			//đọc lại comment bên file sủa nếu bạn chưa hiểu chỗ này
 			if(mysql_num_rows(mysql_query("SELECT * FROM `thanh_vien` WHERE `tai_khoan` = '$user'")) >0){
 			$error4 = "username đã tồn tại";
 			}
