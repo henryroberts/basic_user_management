@@ -22,7 +22,8 @@ if(isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["dn"]
       <th style="text-align: center">Mật khẩu</th>
   </tr>
   <?php
-        // Lọc ra những người có trong db có quyền truy cập khác 2. có nghĩa là lọc ra thành viên. vì đây là trang thành viên. Để đảm bảo bảo mật thì thành viên không được xem thông tin về admin
+        /* Lọc ra những người có trong db có quyền truy cập khác 2. có nghĩa là lọc ra thành viên. vì đây là trang thành viên.
+         Để đảm bảo bảo mật thì thành viên không được xem thông tin về admin */
 		$sql = "SELECT * FROM `thanh_vien` WHERE `quyen_truy_cap` != 2";
         $query = mysql_query($sql);
         while ($row = mysql_fetch_array($query)) {
@@ -42,6 +43,6 @@ if(isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["dn"]
 <?php
 	}
 	else{
-		header("location: login.php");
+		header("location: index.php");
 		}
 ?>

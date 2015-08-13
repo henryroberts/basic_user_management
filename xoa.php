@@ -10,6 +10,6 @@ if(isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["dntc
 	header("location: ql_thanhvien.php"); // thực thi xong thì chuyển hướng admin về trang quản lý
 	}
 	else {
-		header("location: login.php");
+		header("location: index.php");
 		}
 ?>
