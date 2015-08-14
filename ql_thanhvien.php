@@ -53,7 +53,7 @@ return conf;
              <td><?php echo $row["id_thanhvien"] ?></td>
              <td><?php echo $row["tai_khoan"] ?></td>
              <td><?php echo $row["mat_khau"] ?></td>
-             <td style="text-align: center"><?php echo $row["quyen_truy_cap"] ?></td>
+             <td style="text-align: center"><?php if($row["quyen_truy_cap"] == 2) {echo "Admin";} else {echo "Member";} ?></td>
              <td style="text-align: center"><a href="sua.php?id_tv=<?php echo $row["id_thanhvien"]; ?>">sửa</a></td>
              <td style="text-align: center"><a onClick="return xoatv();" href="xoa.php?id_tv=<?php echo $row["id_thanhvien"]; ?>">Xóa</a></td>
            </tr>

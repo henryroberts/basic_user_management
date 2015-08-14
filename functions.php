@@ -1,5 +1,5 @@
 <?php
-     // Kiem tra du lieu khac rong
+     // Ki?m tra d? li?u khác r?ng
 	function checkEmpty($value){
 		$flag = false;
 		if(!isset($value) || trim($value) == ""){
@@ -8,7 +8,7 @@
 		return $flag;
 	}
 	
-	// Kiem tra chieu dai du lieu
+	// Ki?m tra chi?u dài d? li?u
 	function checkLength($value, $min, $max){
 		$flag 	= false;
 		$length	= strlen($value);

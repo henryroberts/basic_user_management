@@ -35,7 +35,7 @@ if(isset($_POST["submit"])){
 			$pass = md5($_POST["pass"]); // mã hóa password để đảm bảo bảo mật
 			}
 	if(isset($user) && isset($pass)){
-			$sql = 'SELECT * FROM thanh_vien WHERE tai_khoan = "'.$user.'" AND mat_khau = "'.$pass.'"'; // tvan
+			$sql = 'SELECT * FROM thanh_vien WHERE tai_khoan = "'.$user.'" AND mat_khau = "'.$pass.'"'; // truy vấn
 			$qr = mysql_query($sql); // thực thi truy vấn
 			$rows = mysql_num_rows($qr); // đếm số dòng trả về từ câu truy vấn
 			$qtc = mysql_fetch_array($qr); // tạo biến quản lý quyền truy cập
